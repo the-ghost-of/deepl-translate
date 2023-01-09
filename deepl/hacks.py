@@ -11,10 +11,7 @@ def calculate_valid_timestamp(timestamp, i_count):
 
 def generate_timestamp(sentences):
     now = int(time.time() * 1000)
-    i_count = 1
-    for sentence in sentences:
-        i_count += sentence.count("i")
-
+    i_count = 1 + sum(sentence.count("i") for sentence in sentences)
     return calculate_valid_timestamp(now, i_count)
 
 

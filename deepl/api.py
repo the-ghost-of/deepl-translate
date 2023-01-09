@@ -34,9 +34,7 @@ def split_into_sentences(text, **kwargs):
     response.raise_for_status()
 
     json_response = response.json()
-    sentences = extract_split_sentences(json_response)
-
-    return sentences
+    return extract_split_sentences(json_response)
 
 
 def request_translation(source_language, target_language, text, **kwargs):
@@ -44,8 +42,7 @@ def request_translation(source_language, target_language, text, **kwargs):
     data = generate_translation_request_data(
         source_language, target_language, sentences, **kwargs
     )
-    response = requests.post(API_URL, data=json.dumps(data), headers=headers)
-    return response
+    return requests.post(API_URL, data=json.dumps(data), headers=headers)
 
 
 def translate(source_language, target_language, text, **kwargs):
@@ -57,6 +54,4 @@ def translate(source_language, target_language, text, **kwargs):
 
     json_response = response.json()
     translated_sentences = extract_translated_sentences(json_response)
-    translated_text = " ".join(translated_sentences)
-
-    return translated_text
+    return " ".join(translated_sentences)

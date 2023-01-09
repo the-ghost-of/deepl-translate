@@ -11,7 +11,7 @@ def parse_arguments():
     )
 
     parser.add_argument(
-        "--version", action="version", version="%(prog)s {}".format(__version__)
+        "--version", action="version", version=f"%(prog)s {__version__}"
     )
 
     parser.add_argument("source_language", help="Source language of your text")
@@ -37,11 +37,7 @@ def main():
     source_language = args.source_language
     target_language = args.target_language
 
-    if args.file:
-        text = read_file_lines(args.file)
-    else:
-        text = args.text
-
+    text = read_file_lines(args.file) if args.file else args.text
     kwargs = {}
     if args.formal:
         kwargs["formality_tone"] = "formal"
