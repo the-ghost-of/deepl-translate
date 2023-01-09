@@ -6,7 +6,7 @@ def create_abbreviations_dictionary(languages=SUPPORTED_LANGUAGES):
     verbose_dict = {
         language["language"].lower(): language["code"] for language in languages
     }
-    return {**short_dict, **verbose_dict}
+    return short_dict | verbose_dict
 
 
 def abbreviate_language(language):
